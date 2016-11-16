@@ -12,4 +12,4 @@ environment:
   - SCRIPT: mingw32
   - SCRIPT: mingw64
 build_script:
-  - call scripts\appveyor\%s.bat
+  - call scripts\appveyor\%SCRIPT%.bat
