@@ -5,4 +5,4 @@ set CONFIGURATION=Debug
 
 cmake -DCMAKE_BUILD_TYPE=%CONFIGURATION% -G "MinGW Makefiles" . || exit /b 1
 cmake --build . || exit /b 2
-ctest -V . || exit /b 3
+bin\ArduinoJsonTests.exe || exit /b 3

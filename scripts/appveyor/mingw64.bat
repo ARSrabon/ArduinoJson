@@ -1,8 +1,15 @@
 @echo off
 
-set PATH=C:\mingw64\bin;%PATH:C:\Program Files\Git\usr\bin;=%
-set CONFIGURATION=Debug
+echo %PATH%
 
-cmake -DCMAKE_BUILD_TYPE=%CONFIGURATION% -G "MinGW Makefiles" . || exit /b 1
+:: remove git.exe from PATH (CMake don't like it)
+set PATH=%PATH:C:\Program Files\Git\usr\bin;=%
+
+:: inject MinGW in PATH
+set PATH=C:\mingw64\bin;%PATH%
+
+echo %PATH%
+
+cmake -DCMAKE_BUILD_TYPE=Debug -G "MinGW Makefiles" . || exit /b 1
 cmake --build . || exit /b 2
-ctest -V . || exit /b 3
+bin\ArduinoJsonTests.exe || exit /b 3
